@@ -12,6 +12,9 @@ Tensor language for ML, AI. On-prem and cloud ready.
 ## Examples
 
 __Python RPC__
+
+Tensor-lang imports directly into Python using [Numba](http://numba.pydata.org)'s "fFFi" backend.  This ensures that Python code expecting Numpy, Pandas, dask, xarray objects will just work, with zero marshalling overhead.  (xtensor is not currently supported because they are too new, and also they have "tensor" in their name and this messes up our compiler.)
+
 ```
 import tensorlang
 ai_tensors = tensorlang.load('ai_tensors.tl')
@@ -28,14 +31,21 @@ jl_result = ai_tensors.predict()
 # FAQ
 
 _Q: Is this real?_
+
 A: Amazingly so.
 
 _Q: Why isn't this just FORTRAN?_
+
 A: We deviate significantly from the FORTRAN 2008/2010 language specification. One major break is that we do not support FORTRAN 77 constructs.  Additionally, we do not guarantee that we will support FORTRAN 2015/2018 (especially if they do not fix their off-by-3 error.)
 
 _Q: But this looks a lot like FORTRAN._
+
 A: Well, your Javascript looks a lot like crap.
 
 _Q: How do I get it?_
+
 A: `conda install tensor-lang`
 
+_Q: How come so many of the source directories seem to be empty?_
+
+A: There seems to be a small bug in Github's rendering of `.tl` syntax files.  We're working on resolving it with them.
